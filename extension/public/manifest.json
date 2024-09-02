@@ -1,0 +1,62 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "Auction Manager",
+    "description": "Simplify trading process for dealers",
+    "background": {
+        "service_worker": "js/background.js"
+    },
+    "action": {
+        "default_popup": "popup/index.html",
+        "default_title": "Auction Manager",
+        "default_icon": "img/icon.png"
+    },
+    "icons": {
+        "16": "img/icon.png",
+        "32": "img/icon.png",
+        "48": "img/icon.png",
+        "128": "img/icon.png",
+        "256": "img/icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.copart.com/*"
+            ],
+            "js": [
+                "js/jquery.js",
+                "js/index.js"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "https://g2auction.copart.com/*"
+            ],
+            "js": [
+                "js/jquery.js",
+                "js/g2.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "permissions": [
+        "proxy",
+        "storage",
+        "unlimitedStorage",
+        "webRequest",
+        "webRequestAuthProvider",
+        "declarativeNetRequestWithHostAccess",
+        "tabs",
+        "cookies",
+        "management",
+        "background"
+    ],
+    "host_permissions": [
+        "*://*.copart.com/*"
+    ],
+    "externally_connectable": {
+        "matches": [ "*://*.copart.com/*" ]
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxHCe4hZ0lRmb45LCOpCATG9nEQ/gJlFynYlGKvxmpePCgdzWesGKKor4QefHS3n+f8E3X4lpFpJnjmC32ZIvSJTtyqBt5j+aZ/2jubV2j9WEppf/UiY692lPOm5oz8khA3M8QmpbkP4S93oW05ZCSAZZysMUpbO/2854zoCy+bBsTx7ThWb7Z4Qws385Bh1bXwIZmEqd2L8N3//kkEGP1LeLuocmf4SMl0e0Ol8sUntctLYXOj5OvkteUhyOrw+LR+v20RVpwFY8chIjMik0Pt2nQYKrXLYXCCDXOSVO155l/dAza9TocQZx5SdmTJ+2479V7Xs5F8F4cpDvVWK6VQIDAQAB"
+}
